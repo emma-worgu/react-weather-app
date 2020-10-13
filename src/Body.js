@@ -3,7 +3,7 @@ import './body.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SavedSearches from './SavedSearches';
 
-function Body() {
+function Body(props) {
     return(
         <div>
             <div className="main-content container">
@@ -12,7 +12,7 @@ function Body() {
                         <div className="card">
                             <div className="card-body">
                                 <h5 className="card-title">Weather in Your Locality</h5>
-                                <p>This is Weather in your Locality</p>
+                                {props.message}
                             </div>
                         </div>
                     </div>

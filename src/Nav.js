@@ -1,17 +1,14 @@
 import React from 'react';
+import SearchNav from './SearchNav';
+import MainNav from './MainNav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './nav.css';   
 
-function Nav() {
+function Nav(props) {
     return (
         <div>
-            <nav className="nav bg-success">
-                <div className="container">
-                    <p className="searchPara">Search for weather in your locality</p>
-                    <input className="form-control" type="text" placeholder="EX.Lagos"/>
-                    <button type="submit" className="btn btn-warning">Search</button>
-                </div>
-            </nav>
+            <MainNav/>
+            <SearchNav value={props.locality} localHandler={props.localHandler} handleForm={props.handleForm}/>
         </div>
     );
 };
