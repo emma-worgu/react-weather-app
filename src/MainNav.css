@@ -1,0 +1,12 @@
+.container-fluid {
+    width: auto;
+}
+.navbar {
+    width: auto;
+    background-color: lightgoldenrodyellow;
+}
+.desktop-view {
+    display: flex-end;
+    justify-content: space-around;
+    background-color: navy;
+}

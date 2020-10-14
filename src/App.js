@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 import Nav from './Nav';
 import Body from './Body';
+import About from './About';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, 
+  Switch,
+  BrowserRouter as Router
+} from 'react-router-dom';
 
 function App() {
   const[locality, setLocality] = useState('');
@@ -31,6 +36,7 @@ function App() {
       );
     };
   };
+  // This will save the user previous searches
   let recentSearched;
   localStorage.setItem(recentSearched, locality);
   const recent = localStorage.getItem(recentSearched);
@@ -38,7 +44,12 @@ function App() {
   return (
     <div>
       <Nav value={locality} localHandler={localHandler} handleForm={handleForm}/>
-      <Body message={logic()}/>
+      <Router>
+        <Switch>
+          <Route path="/" exact render={() =><Body message={logic()}/>} />
+          <Route path="/about" component={About}/>
+        </Switch>
+      </Router>
       <Footer/>
     </div>
   );
