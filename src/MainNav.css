@@ -9,4 +9,14 @@
     display: flex-end;
     justify-content: space-around;
     background-color: navy;
+    padding-bottom: 2px;
+}
+.desktop-nav {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+.desktop-nav > li {
+    margin-top: 12px;
 }

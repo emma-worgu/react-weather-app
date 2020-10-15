@@ -18,7 +18,7 @@ function MainNav() {
               </button>
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-                  <li className>
+                  <li className="nav-item">
                     <Link className="nav-link" to="/">Home</Link>
                   </li>
                   <li className="nav-item">
@@ -34,7 +34,7 @@ function MainNav() {
       return(
         <div className="desktop-view container-fluid">
           <Router>
-           <ul>
+           <ul className="desktop-nav">
              <li>
                <Link to="/">Home</Link>
              </li>
