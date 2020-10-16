@@ -18,12 +18,18 @@ function App() {
       setLocality(e.target.value);
   };
 
+  const[apiLoading, setApiLoading] = useState({
+    loading: false,
+    data: null
+  })
+
   const handleForm = (e) => {
       e.preventDefault();
       console.log(locality);
   };
 
   useEffect(() => {
+    setApiLoading({loading: true})
     const location = navigator.geolocation;
     if(location) {
       location.watchPosition((position, err) => {
@@ -32,18 +38,20 @@ function App() {
         } else {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
-          const url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.ApiKey}`;
-          fetch(url)
-            .then((res) => {
-              console.log(res);
-            })
-              .then((data) => {
-                console.log(data);
-              })
+          fetch(`api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.ApiKey}`)
+          .then((res) => {
+            return res.json();
+          })
+            .then((data) => {
+              setApiLoading({
+                loading: false,
+                data: data
+              });
+            });
         }
       }) 
     };
-  }, [])
+  }, [setApiLoading])
 
   const logic = () => {
     if (locality === '') {
@@ -67,15 +75,15 @@ function App() {
   //console.log(recent);
   return (
     <div>
-      <Nav value={locality} localHandler={localHandler} handleForm={handleForm}/>
       <Router>
-        <Switch>
-          <Route path="/" exact render={() =><Body message={logic()}/>} />
-          <Route path="/about" component={About}/>
-          <Route component={NotFoundPage}/>
-        </Switch>
+        <Nav value={locality} localHandler={localHandler} handleForm={handleForm}/>
+          <Switch>
+            <Route path="/" exact render={() =><Body message={logic()}/>} />
+            <Route path="/about" component={About}/>
+            <Route component={NotFoundPage}/>
+          </Switch>
+        <Footer/>
       </Router>
-      <Footer/>
     </div>
   );
 }
