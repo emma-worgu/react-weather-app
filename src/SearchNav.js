@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './nav.css';   
 
 function SearchNav(props) {
-    console.log(props)
     return (
         <div>
             <nav className="nav bg-success">

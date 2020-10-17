@@ -1,9 +1,15 @@
 import React from 'react';
+import Nav from './Nav';
+import Footer from './Footer';
 
 function About() {
     return(
         <div>
-            <h3>This is Emmanuel</h3>
+            <Nav />
+            <div>
+                <h4>This is the About Page</h4>
+            </div>
+            <Footer />
         </div>
     );
 };

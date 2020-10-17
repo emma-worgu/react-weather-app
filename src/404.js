@@ -1,9 +1,15 @@
 import React from 'react';
+import Nav from './Nav';
+import Footer from './Footer';
 
 const NotFoundPage = () => {
     return (
         <div>
-            <h1>This page is not found</h1>
+            <Nav />
+            <div>
+                <h4>This Page is Not Found... Please Click the Home link</h4>
+            </div>
+            <Footer />
         </div>
     );
 };
